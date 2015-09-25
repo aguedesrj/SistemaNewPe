@@ -27,7 +27,7 @@
     		<plugin>
     			<groupId>org.apache.tomcat.maven</groupId>
 				<artifactId>tomcat7-maven-plugin</artifactId>
-    		</plugin>
+    		</plugin>   		
     	</plugins>
   	</build>
 </project>
