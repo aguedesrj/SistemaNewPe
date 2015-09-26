@@ -5,13 +5,40 @@
 
 <struts>
 
-	<package name="user" namespace="/User" extends="struts-default">
-		<action name="Login">
-			<result>login.jsp</result>
-		</action>
-		<action name="Welcome" class="br.com.guedes.newpe.action.LoginAction">
-			<result name="SUCCESS">pages/welcome_user.jsp</result>
-		</action>
-	</package>
+    <constant name="struts.i18n.encoding" value="UTF-8"/> 
+    <constant name="struts.devMode" value="false" />
+    <constant name="struts.custom.i18n.resources" value="globalmessages"></constant>
+    <constant name="struts.enable.DynamicMethodInvocation" value="false" />
+
+    <package name="default" namespace="/" extends="struts-default">
+        
+        <!--
+		<interceptors>  
+			<interceptor 
+			    name="interceptorOPermission" class="br.com.guedes.sistemacomercial.controller.SistemaComercialGuedesInterceptor">
+			</interceptor>  
+			<interceptor-stack name="stackSistemaComercial">  
+				<interceptor-ref name="interceptorOPermission" />
+				<interceptor-ref name="defaultStack" />  
+			</interceptor-stack>   
+		</interceptors>
+		
+		<default-interceptor-ref name="stackSistemaComercial"/>
+		-->
+		
+        <default-action-ref name="index" />
+
+        <global-results>
+            <result name="error">/WEB-INF/jsp/template/erro.jsp</result>
+        </global-results>
+
+        <global-exception-mappings>
+            <exception-mapping exception="java.lang.Exception" result="error"/>
+        </global-exception-mappings>
+
+    </package>
+    
+    <include file="struts-usuario.xml"/>
+    <include file="struts-paciente.xml"/>
 
 </struts>
