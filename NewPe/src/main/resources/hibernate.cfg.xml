@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE hibernate-configuration PUBLIC
 		"-//Hibernate/Hibernate Configuration DTD 3.0//EN"
-		"D:\git\SistemaComercialGuedes_Struts2\src\hibernate-configuration-3.0.dtd">
+		"http://hibernate.sourceforge.net/hibernate-configuration-3.0.dtd">
 <hibernate-configuration>
     <session-factory>
         <property name="hibernate.connection.driver_class">org.firebirdsql.jdbc.FBDriver</property>
-        <property name="hibernate.connection.url">jdbc:firebirdsql://localhost:3050//Users/andrelessaguedes/Documents/SISTEMAPODOLOGIA.FDB</property>
+        <!-- <property name="hibernate.connection.url">jdbc:firebirdsql://localhost:3050//Users/andrelessaguedes/Documents/SISTEMAPODOLOGIA.FDB</property> -->
+        <property name="hibernate.connection.url">jdbc:firebirdsql:192.168.0.119/3050:\\192.168.0.119\Users\Andre\Downloads\SISTEMAPODOLOGIA.FDB</property>
         <property name="hibernate.connection.username">sysdba</property>
 		<property name="hibernate.connection.password">masterkey</property>
         <property name="hibernate.dialect">org.hibernate.dialect.FirebirdDialect</property>
@@ -14,6 +15,31 @@
         <property name="hibernate.c3p0.max_size">5</property>
         <property name="hibernate.c3p0.min_size">1</property>
         <property name="hibernate.show_sql">true</property>
+        
+        <mapping class="br.com.guedes.newpe.model.Pessoa"/>
+        <mapping class="br.com.guedes.newpe.model.Endereco"/>
+        <mapping class="br.com.guedes.newpe.model.Estado"/>
+        <mapping class="br.com.guedes.newpe.model.Usuario"/>
+        <mapping class="br.com.guedes.newpe.model.TipoContato"/>
+        <mapping class="br.com.guedes.newpe.model.Contato"/>
+        
+<!--         <mapping class="br.com.guedes.sistemaPodologia.model.Configuracao"/>
+        <mapping class="br.com.guedes.sistemaPodologia.model.Consulta"/>
+        <mapping class="br.com.guedes.sistemaPodologia.model.Diagnostico"/>
+        <mapping class="br.com.guedes.sistemaPodologia.model.DiagnosticoDoencaPk"/>
+        <mapping class="br.com.guedes.sistemaPodologia.model.Doenca"/>
+        <mapping class="br.com.guedes.sistemaPodologia.model.Hora"/>
+        <mapping class="br.com.guedes.sistemaPodologia.model.Modulo"/>
+        <mapping class="br.com.guedes.sistemaPodologia.model.ModuloPerfil"/>
+        <mapping class="br.com.guedes.sistemaPodologia.model.ModuloPerfilPk"/>
+        <mapping class="br.com.guedes.sistemaPodologia.model.Paciente"/>
+        <mapping class="br.com.guedes.sistemaPodologia.model.Perfil"/>
+        <mapping class="br.com.guedes.sistemaPodologia.model.Profissao"/>
+        <mapping class="br.com.guedes.sistemaPodologia.model.Profissional"/>
+        <mapping class="br.com.guedes.sistemaPodologia.model.Tratamento"/>
+        <mapping class="br.com.guedes.sistemaPodologia.model.UsuarioPerfil"/>
+        <mapping class="br.com.guedes.sistemaPodologia.model.UsuarioPerfilPk"/>
+        <mapping class="br.com.guedes.sistemaPodologia.model.VW_Usuario"/> -->
 
     </session-factory>
 </hibernate-configuration>
