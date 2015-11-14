@@ -1,8 +1,11 @@
 package br.com.guedes.newpe.action;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
+
+import br.com.guedes.newpe.facade.PacienteFacade;
 import br.com.guedes.newpe.facade.UsuarioFacade;
 import br.com.guedes.newpe.model.Usuario;
 import br.com.guedes.newpe.util.BusinessException;
@@ -19,7 +22,7 @@ public class UsuarioAction extends BasicAction {
 	private UsuarioVO usuario = new UsuarioVO();
 	
 	@Autowired
-	private UsuarioFacade usuarioFacade;
+	public UsuarioFacade usuarioFacade;
 
 	public String exibirTelaLogin() {
 		return SUCCESS;
@@ -39,11 +42,11 @@ public class UsuarioAction extends BasicAction {
 			return SUCCESS;				
 		} catch (BusinessException e) {
 			LOG.error(e.getMessage(), e);
-			setMensagemUsuario(e.getMessage());
+			addActionError(e.getMessage());
 			return ERROR;
 		} catch (Exception e) {
 			LOG.fatal(e.getMessage(), e);
-			setMensagemUsuario("Serviço de Login indisponível.");
+			addActionError("Serviço de Login indisponível.");
 			return ERROR;
 		}
 	}	

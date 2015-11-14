@@ -13,9 +13,14 @@
 
 		<action name="Login" class="br.com.guedes.newpe.action.UsuarioAction" method="exibirTelaLogin">
             <result name="success">/login.jsp</result>
-        </action> 		
+        </action> 
         
         <action name="Entrar" class="br.com.guedes.newpe.action.UsuarioAction" method="efetuarLogin">
+            <result name="success" type="tiles">home</result>
+            <result name="error">/login.jsp</result>           
+        </action>		
+        
+<!--         <action name="Entrar" class="br.com.guedes.newpe.action.UsuarioAction" method="efetuarLogin">
             <result name="success" type="json">
 				<param name="excludeNullProperties">true</param>		
 				<param name="excludeProperties">
@@ -28,12 +33,12 @@
 					request,fieldErrors,errors,actionErrors,actionMessages,	errorMessages,locale,texts
 				</param>            
             </result>            
-        </action>
+        </action> -->
         
-        <action name="Home" class="br.com.guedes.newpe.action.UsuarioAction" method="exibirTelaHome">
-            <result name="success" type="tiles">home.usuario</result>
+<!--         <action name="Home" class="br.com.guedes.newpe.action.UsuarioAction" method="exibirTelaHome">
+            <result name="success" type="tiles">home</result>
             <result name="error">/login.jsp</result>
-        </action>        
+        </action>   -->      
         
     </package>	
 </struts>

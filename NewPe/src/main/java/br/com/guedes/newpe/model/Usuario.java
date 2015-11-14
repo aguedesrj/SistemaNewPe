@@ -18,13 +18,13 @@ import org.springframework.stereotype.Component;
 @Component
 @Entity
 @Table(name="TB_USUARIO")
-@SequenceGenerator(name="SEQUENCE_USUARIO", sequenceName = "GEN_USUARIO", allocationSize=1)
+//@SequenceGenerator(name="SEQUENCE_USUARIO", sequenceName = "GEN_USUARIO", allocationSize=1)
 public class Usuario implements Serializable {
 
 	private static final long serialVersionUID = 3482950945370983014L;
 
 	@Id
-	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="SEQUENCE_USUARIO")
+//	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="SEQUENCE_USUARIO")
 	@Column(name="USU_CODIGO")
 	private Integer usuCodigo;
 	
@@ -37,9 +37,9 @@ public class Usuario implements Serializable {
 	@Column(name="USU_SITUACAO", length=1, nullable=false)
 	private String usuSituacao;
 	
-	@OneToOne(fetch=FetchType.EAGER)
-	@JoinColumn(name="PES_CODIGO", nullable=false)
-	private Pessoa pessoa;
+//	@OneToOne(fetch=FetchType.EAGER)
+//	@JoinColumn(name="PES_CODIGO", nullable=false)
+//	private Pessoa pessoa;
 
 	public Integer getUsuCodigo() {
 		return usuCodigo;
@@ -73,11 +73,11 @@ public class Usuario implements Serializable {
 		this.usuSituacao = usuSituacao;
 	}
 
-	public Pessoa getPessoa() {
-		return pessoa;
-	}
-
-	public void setPessoa(Pessoa pessoa) {
-		this.pessoa = pessoa;
-	}	
+//	public Pessoa getPessoa() {
+//		return pessoa;
+//	}
+//
+//	public void setPessoa(Pessoa pessoa) {
+//		this.pessoa = pessoa;
+//	}	
 }

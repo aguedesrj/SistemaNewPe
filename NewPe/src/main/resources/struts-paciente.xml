@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+        "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+        "http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+
+    <package name="Paciente" namespace="/Paciente" extends="default, json-default">
+        
+		<result-types>
+    		<result-type name="tiles" class="org.apache.struts2.views.tiles.TilesResult" />
+    	</result-types>        
+
+		<action name="Pesquisa" class="br.com.guedes.newpe.action.PacienteAction" method="exibirTelaPesquisa">
+            <result name="success" type="tiles">paciente.pesquisa</result>
+        </action> 
+        
+		<action name="Manutencao" class="br.com.guedes.newpe.action.PacienteAction" method="exibirTelaManutencao">
+            <result name="success" type="tiles">paciente.manutencao</result>
+        </action>        
+	
+        
+<!--         <action name="Entrar" class="br.com.guedes.newpe.action.UsuarioAction" method="efetuarLogin">
+            <result name="success" type="json">
+				<param name="excludeNullProperties">true</param>		
+				<param name="excludeProperties">
+					request,fieldErrors,errors,actionErrors,actionMessages,	errorMessages,locale,texts
+				</param>            
+            </result>
+            <result name="error" type="json">
+				<param name="excludeNullProperties">true</param>		
+				<param name="excludeProperties">
+					request,fieldErrors,errors,actionErrors,actionMessages,	errorMessages,locale,texts
+				</param>            
+            </result>            
+        </action> -->
+        
+<!--         <action name="Home" class="br.com.guedes.newpe.action.UsuarioAction" method="exibirTelaHome">
+            <result name="success" type="tiles">home</result>
+            <result name="error">/login.jsp</result>
+        </action>   -->      
+        
+    </package>	
+</struts>
