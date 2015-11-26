@@ -10,7 +10,8 @@
   
 	<title>::: New Pé :::</title>
 	
- 	<script src="../js/jquery/jquery-2.1.4.min.js"></script>
+	<script src="../js/jquery/jquery.js"></script>
+ 	<script src="../js/jquery/jquery-ui.js"></script>
 	<script src="../js/semantic-ui/semantic.min.js"></script>
 	
 	<link rel="stylesheet" type="text/css" href="../js/semantic-ui/semantic.min.css">

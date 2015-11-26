@@ -11,7 +11,8 @@
 	<meta http-equiv="expires" content="0">    
 	<meta http-equiv="keywords" content="keyword1,keyword2,keyword3"> 
 	
- 	<script src="../js/jquery/jquery-2.1.4.min.js"></script>
+	<script src="../js/jquery/jquery.js"></script>
+ 	<script src="../js/jquery/jquery-ui.js"></script>
 	<script src="../js/semantic-ui/semantic.min.js"></script>
 	
 	<link rel="stylesheet" type="text/css" href="../js/semantic-ui/semantic.min.css">
@@ -20,9 +21,11 @@
 
 </head>
 <body>
-	<div id="tilesMenu"><tiles:insertAttribute name="menu"/></div>
-	<div id="tilesMensagem" style="padding-top: 25px;"><tiles:insertAttribute name="mensagem"/></div>
-	<div id="tilesConteudo"><tiles:insertAttribute name="conteudo"/></div>	
-	<div id="tilesRodape"><tiles:insertAttribute name="rodape"/></div>
+	<div class="main ui container" style="width: 900px;">
+		<div id="tilesMenu"><tiles:insertAttribute name="menu"/></div>
+		<div id="tilesMensagem"><tiles:insertAttribute name="mensagem"/></div>
+		<div id="tilesConteudo"><tiles:insertAttribute name="conteudo"/></div>	
+		<div id="tilesRodape"><tiles:insertAttribute name="rodape"/></div>
+	</div>
 </body>
 </html>

@@ -17,10 +17,9 @@
         
 		<action name="Manutencao" class="br.com.guedes.newpe.action.PacienteAction" method="exibirTelaManutencao">
             <result name="success" type="tiles">paciente.manutencao</result>
-        </action>        
-	
+        </action>
         
-<!--         <action name="Entrar" class="br.com.guedes.newpe.action.UsuarioAction" method="efetuarLogin">
+		<action name="EfetuaPesquisa" class="br.com.guedes.newpe.action.PacienteAction" method="pesquisarPacientes">
             <result name="success" type="json">
 				<param name="excludeNullProperties">true</param>		
 				<param name="excludeProperties">
@@ -33,7 +32,7 @@
 					request,fieldErrors,errors,actionErrors,actionMessages,	errorMessages,locale,texts
 				</param>            
             </result>            
-        </action> -->
+        </action>
         
 <!--         <action name="Home" class="br.com.guedes.newpe.action.UsuarioAction" method="exibirTelaHome">
             <result name="success" type="tiles">home</result>

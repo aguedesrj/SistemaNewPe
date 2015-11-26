@@ -54,6 +54,10 @@ public class UsuarioAction extends BasicAction {
 	public String exibirTelaHome() {
 		return SUCCESS;
 	}
+	
+	public String logout() {
+		return SUCCESS;
+	}
 
 	public String getMensagemUsuario() {
 		return mensagemUsuario;
