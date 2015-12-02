@@ -39,7 +39,12 @@ public class PacienteFacadeImpl implements PacienteFacade {
 	 */
 	public List<Pessoa> pesquisar(Paciente paciente) throws BusinessException, IntegrationException {
 		LOGGER.debug("Pesquisando pacientes...");
-		return pacienteDao.pesquisar(paciente);
+		return getPacienteDao().pesquisar(paciente);
+	}
+	
+	public Paciente obterDadosDoPaciente(final Integer pesCodigo) throws BusinessException, IntegrationException {
+		LOGGER.debug("Obtendo dados do paciente...");
+		return getPacienteDao().obterDadosDoPaciente(pesCodigo);
 	}
 
 	public PacienteDao getPacienteDao() {

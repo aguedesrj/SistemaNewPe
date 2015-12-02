@@ -1,14 +1,12 @@
 package br.com.guedes.newpe.vo;
 
 import java.io.Serializable;
-import java.util.List;
 
 public class PacienteVO implements Serializable {
 
 	private static final long serialVersionUID = -4443973515051363781L;
 
 	private PessoaVO pessoaVO;
-	private EnderecoVO enderecoVO;
 	private String cliDataUltimaConsulta;
 	private Integer pacCodigo;
 	private String pacLabora;
@@ -26,8 +24,6 @@ public class PacienteVO implements Serializable {
 	private String pacTabagismo;
 	private Integer pacPeso;
 	private String pacAltura;
-	private ContatoVO contatoVO;
-	private List<ContatoVO> listaContatos;
 	
 	public PessoaVO getPessoaVO() {
 		return pessoaVO;
@@ -45,14 +41,6 @@ public class PacienteVO implements Serializable {
 		this.cliDataUltimaConsulta = cliDataUltimaConsulta;
 	}
 
-	public EnderecoVO getEnderecoVO() {
-		return enderecoVO;
-	}
-	
-	public void setEnderecoVO(EnderecoVO enderecoVO) {
-		this.enderecoVO = enderecoVO;
-	}
-	
 	public Integer getPacCodigo() {
 		return pacCodigo;
 	}
@@ -179,21 +167,5 @@ public class PacienteVO implements Serializable {
 	
 	public void setPacAltura(String pacAltura) {
 		this.pacAltura = pacAltura;
-	}
-	
-	public ContatoVO getContatoVO() {
-		return contatoVO;
-	}
-	
-	public void setContatoVO(ContatoVO contatoVO) {
-		this.contatoVO = contatoVO;
-	}
-	
-	public List<ContatoVO> getListaContatos() {
-		return listaContatos;
-	}
-	
-	public void setListaContatos(List<ContatoVO> listaContatos) {
-		this.listaContatos = listaContatos;
 	}
 }

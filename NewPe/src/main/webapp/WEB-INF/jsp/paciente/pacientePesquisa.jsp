@@ -10,14 +10,17 @@
 		<label>Nome do paciente</label>
         <div class="two fields">
 			<div class="field">
-            	<s:textfield name="pacienteVO.pessoaVO.pesNome" id="pesNome" size="60" maxlength="55" theme="simple" required="true" placeholder="Digite aqui pelo menos 3 letras do paciente..."/>
+            	<s:textfield name="pacienteVO.pessoaVO.pesNome" id="pesNome" size="60" maxlength="55" theme="simple" required="true" placeholder="Digite aqui pelo menos 3 letras do nome do paciente..."/>
           	</div>
 		</div>
 	</div>
 </s:form>
     
 <!-- tabela com os resultados. -->
-<table id="tableListaPacientes" class="ui striped table" style="margin-top: 30px;">
+<div align="right" style="font-size: 14px; font-style: italic;">
+	Total de pacientes encontrados: <span id="spanTotalPacientes" style="font-weight: bold;">0</span>
+</div>
+<table id="tableListaPacientes" class="ui striped table" style="margin-top: 5px;">
 	<thead>
 		<tr>
     		<th style="width: 20px;"></th>

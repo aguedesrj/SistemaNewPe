@@ -66,4 +66,29 @@ public class PacienteDaoImpl extends HibernateDaoSupport implements PacienteDao 
 			}
 		}
 	}
+	
+	/*
+	 * (non-Javadoc)
+	 * @see br.com.guedes.newpe.dao.PacienteDao#obterDadosDoPaciente(java.lang.Integer)
+	 */
+	@SuppressWarnings("unchecked")
+	public Paciente obterDadosDoPaciente(final Integer pesCodigo) throws BusinessException, IntegrationException {
+		try {
+			StringBuilder hql = new StringBuilder();
+			hql.append("from Paciente ");
+			hql.append(" where pessoa.pesCodigo == " + pesCodigo);
+			
+			ArrayList<Paciente> lista = (ArrayList<Paciente>) getHibernateTemplate().find(hql.toString());
+			if (lista != null && lista.size() == 1) {
+				return lista.get(0);
+			}
+			throw new BusinessException("Paciente não encontrado.");
+		} catch (Exception e) {
+			if (e instanceof BusinessException) {
+				throw new BusinessException(e.getMessage());
+			} else {
+				throw new IntegrationException("Não foi possível obter os dados do paciente.");
+			}
+		}
+	}
 }

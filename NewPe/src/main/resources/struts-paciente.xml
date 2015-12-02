@@ -34,10 +34,10 @@
             </result>            
         </action>
         
-<!--         <action name="Home" class="br.com.guedes.newpe.action.UsuarioAction" method="exibirTelaHome">
-            <result name="success" type="tiles">home</result>
-            <result name="error">/login.jsp</result>
-        </action>   -->      
+        <action name="InicioAlteracao" class="br.com.guedes.newpe.action.PacienteAction" method="obterDadosDoPaciente">
+            <result name="success" type="tiles">paciente.manutencao</result>
+            <result name="error" type="tiles">paciente.pesquisa</result>
+        </action>   
         
     </package>	
 </struts>

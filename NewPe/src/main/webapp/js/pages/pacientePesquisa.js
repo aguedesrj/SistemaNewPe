@@ -33,7 +33,9 @@ $(document).ready(function() {
 });
 
 function atualizarTabela(listaPacientes) {
+	$("#spanTotalPacientes").html("0");
 	if (listaPacientes != undefined && listaPacientes.length > 0) {
+		$("#spanTotalPacientes").html(listaPacientes.length);
 		$("#tableListaPacientes tbody").html("");
 		var html = "";
 		for (var i = 0; listaPacientes.length > i; i++) {

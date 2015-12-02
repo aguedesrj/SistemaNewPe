@@ -1,6 +1,7 @@
 package br.com.guedes.newpe.vo;
 
 import java.io.Serializable;
+import java.util.List;
 
 public class PessoaVO implements Serializable {
 
@@ -12,6 +13,9 @@ public class PessoaVO implements Serializable {
 	private String pesSexo;	
 	private String pesDtNascimento;
 	private String pesObs;
+	private EnderecoVO enderecoVO;
+	private ContatoVO contatoVO;
+	private List<ContatoVO> listaContatos;
 	
 	public Integer getPesCodigo() {
 		return pesCodigo;
@@ -59,5 +63,29 @@ public class PessoaVO implements Serializable {
 
 	public void setPesCpf(String pesCpf) {
 		this.pesCpf = pesCpf;
+	}
+
+	public EnderecoVO getEnderecoVO() {
+		return enderecoVO;
+	}
+
+	public void setEnderecoVO(EnderecoVO enderecoVO) {
+		this.enderecoVO = enderecoVO;
+	}
+
+	public ContatoVO getContatoVO() {
+		return contatoVO;
+	}
+
+	public void setContatoVO(ContatoVO contatoVO) {
+		this.contatoVO = contatoVO;
+	}
+
+	public List<ContatoVO> getListaContatos() {
+		return listaContatos;
+	}
+
+	public void setListaContatos(List<ContatoVO> listaContatos) {
+		this.listaContatos = listaContatos;
 	}
 }

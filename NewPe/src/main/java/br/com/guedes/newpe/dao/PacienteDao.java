@@ -17,4 +17,14 @@ public interface PacienteDao {
 	 * @throws IntegrationException
 	 */
 	public List<Pessoa> pesquisar(final Paciente paciente) throws BusinessException, IntegrationException;
+	
+	/**
+	 * Obter dados do paciente por ID.
+	 * 
+	 * @param pesCodigo Integer
+	 * @return Paciente
+	 * @throws BusinessException
+	 * @throws IntegrationException
+	 */
+	public Paciente obterDadosDoPaciente(final Integer pesCodigo) throws BusinessException, IntegrationException;
 }

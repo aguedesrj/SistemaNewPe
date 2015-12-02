@@ -37,6 +37,9 @@ public class Pessoa implements Serializable {
 	
 	@Column(name="PES_SEXO")
 	private String pesSexo;		
+	
+	@Column(name="PES_CPF")
+	private String pesCpf;	
 
 	@Column(name="PES_DTNASCIMENTO")
 	private Calendar pesDtNascimento;
@@ -116,5 +119,13 @@ public class Pessoa implements Serializable {
 
 	public void setListaContato(Set<Contato> listaContato) {
 		this.listaContato = listaContato;
+	}
+
+	public String getPesCpf() {
+		return pesCpf;
+	}
+
+	public void setPesCpf(String pesCpf) {
+		this.pesCpf = pesCpf;
 	}
 }
