@@ -21,11 +21,21 @@
     	<property name="sessionFactory" ref="sessionFactory" />
    	</bean> 
    	
-	<!-- Bean que implementa a classe PacienteFacadeImpl -->
+	<!-- Bean que implementa a classe ContatoFacadeImpl -->
+   	<bean id="contatoFacadeImpl" class="br.com.guedes.newpe.facade.ContatoFacadeImpl">  
+    	<property name="sessionFactory" ref="sessionFactory" />   
+   	</bean>		
+   	
+	<!-- Bean que implementa a classe EnderecoFacadeImpl -->
+   	<bean id="enderecoFacadeImpl" class="br.com.guedes.newpe.facade.EnderecoFacadeImpl">  
+    	<property name="sessionFactory" ref="sessionFactory" />   
+   	</bean>	
+   	
+   	<!-- Bean que implementa a classe PacienteFacadeImpl -->
    	<bean id="pacienteFacadeImpl" class="br.com.guedes.newpe.facade.PacienteFacadeImpl">  
     	<property name="pacienteDao" ref="pacienteDaoImpl" />
     	<property name="sessionFactory" ref="sessionFactory" />   
-   	</bean>			
+   	</bean>		
       
    	<!-- Implementacao da interface UsuarioDaoImpl -->  
 	<bean id="usuarioDaoImpl" class="br.com.guedes.newpe.dao.UsuarioDaoImpl" parent="baseSessionFactory"/>    

@@ -6,4 +6,6 @@ $(document).ready(function() {
 	
 	$("#pesNome").focus();
 	
+	$('select.dropdown').dropdown();
+	
 });

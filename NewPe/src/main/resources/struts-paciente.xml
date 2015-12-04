@@ -17,6 +17,7 @@
         
 		<action name="Manutencao" class="br.com.guedes.newpe.action.PacienteAction" method="exibirTelaManutencao">
             <result name="success" type="tiles">paciente.manutencao</result>
+            <result name="error" type="tiles">home</result>
         </action>
         
 		<action name="EfetuaPesquisa" class="br.com.guedes.newpe.action.PacienteAction" method="pesquisarPacientes">

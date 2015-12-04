@@ -76,7 +76,7 @@ public class PacienteDaoImpl extends HibernateDaoSupport implements PacienteDao 
 		try {
 			StringBuilder hql = new StringBuilder();
 			hql.append("from Paciente ");
-			hql.append(" where pessoa.pesCodigo == " + pesCodigo);
+			hql.append(" where pessoa.pesCodigo = " + pesCodigo);
 			
 			ArrayList<Paciente> lista = (ArrayList<Paciente>) getHibernateTemplate().find(hql.toString());
 			if (lista != null && lista.size() == 1) {

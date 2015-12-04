@@ -2,6 +2,16 @@
 
 <script src="../js/pages/pacientePesquisa.js"></script>
 
+<s:if test="hasActionErrors()">
+	<div class="ui negative message" style="height: 80px;">
+		<i class="close icon"></i>
+	  	<div class="header">
+	    	Ocorreu o seguinte erro:
+	  	</div>
+	  	<s:actionerror/>
+	</div>		
+</s:if>	
+
 <!-- formulário -->
 <s:form class="ui form" namespace="Paciente" id="formPesquisa" name="formPesquisa" theme="simple">
 	<s:hidden id="pesCodigo" name="pacienteVO.pessoaVO.pesCodigo"></s:hidden>

@@ -1,4 +1,5 @@
 $(document).ready(function() {
+	$("#pesNome").val("");
 	$("#pesNome").focus();
 	
 	$("#pesNome").autocomplete({

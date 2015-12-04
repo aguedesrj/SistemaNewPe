@@ -2,26 +2,26 @@ package br.com.guedes.newpe.action;
 
 import java.util.ArrayList;
 import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
-
+import br.com.guedes.newpe.facade.ContatoFacade;
+import br.com.guedes.newpe.facade.EnderecoFacade;
 import br.com.guedes.newpe.facade.PacienteFacade;
-import br.com.guedes.newpe.facade.UsuarioFacade;
 import br.com.guedes.newpe.model.Contato;
+import br.com.guedes.newpe.model.Estado;
 import br.com.guedes.newpe.model.Paciente;
 import br.com.guedes.newpe.model.Pessoa;
-import br.com.guedes.newpe.model.Usuario;
+import br.com.guedes.newpe.model.TipoContato;
 import br.com.guedes.newpe.util.BusinessException;
-import br.com.guedes.newpe.util.Constantes;
 import br.com.guedes.newpe.util.IntegrationException;
+import br.com.guedes.newpe.util.Util;
 import br.com.guedes.newpe.vo.ContatoVO;
 import br.com.guedes.newpe.vo.EnderecoVO;
+import br.com.guedes.newpe.vo.EstadoVO;
 import br.com.guedes.newpe.vo.PacienteVO;
 import br.com.guedes.newpe.vo.PessoaVO;
-import br.com.guedes.newpe.vo.UsuarioVO;
+import br.com.guedes.newpe.vo.TipoContatoVO;
 
 @Controller
 @Scope("request")
@@ -32,8 +32,16 @@ public class PacienteAction extends BasicAction {
 	@Autowired
 	public PacienteFacade pacienteFacade;
 	
+	@Autowired
+	public EnderecoFacade enderecoFacade;
+	
+	@Autowired
+	public ContatoFacade contatoFacade;
+	
 	private PacienteVO pacienteVO;
 	private List<PessoaVO> listaPacientes;
+	private List<TipoContatoVO> listaTipoContato;
+	private List<EstadoVO> listaEstado;
 	private String mensagemUsuario;
 
 	public String exibirTelaPesquisa() {
@@ -41,7 +49,22 @@ public class PacienteAction extends BasicAction {
 	}	
 	
 	public String exibirTelaManutencao() {
-		return SUCCESS;
+		try {
+			// obter a lista de estados.
+			obterListaEstados();
+			
+			// obter lista de tipos de contatos.
+			obterListaTipoContatos();
+			
+			return SUCCESS;
+		} catch (Exception e) {
+			if (e instanceof BusinessException || e instanceof IntegrationException) {
+				addActionError(e.getMessage());
+			} else {
+				addActionError("Serviço de busca indisponível.");
+			}
+			return ERROR;
+		}
 	}
 	
 	/**
@@ -74,6 +97,10 @@ public class PacienteAction extends BasicAction {
 		}
 	}
 	
+	/**
+	 * 
+	 * @return String
+	 */
 	public String obterDadosDoPaciente() {
 		try {
 			Paciente paciente = pacienteFacade.obterDadosDoPaciente(getPacienteVO().getPessoaVO().getPesCodigo());
@@ -101,7 +128,7 @@ public class PacienteAction extends BasicAction {
 			getPacienteVO().getPessoaVO().setPesNome(paciente.getPessoa().getPesNome());
 			getPacienteVO().getPessoaVO().setPesCpf(paciente.getPessoa().getPesCpf());
 			getPacienteVO().getPessoaVO().setPesSexo(paciente.getPessoa().getPesSexo());
-//			getPacienteVO().getPessoaVO().setPesDtNascimento(paciente.getPessoa().getPesDtNascimento());
+			getPacienteVO().getPessoaVO().setPesDtNascimento(Util.converterCalendarParaString(paciente.getPessoa().getPesDtNascimento(), Util.SIMPLE_DATE_FORMAT_DATA));
 			getPacienteVO().getPessoaVO().setPesObs(paciente.getPessoa().getPesObs());
 			
 			getPacienteVO().getPessoaVO().setEnderecoVO(new EnderecoVO());
@@ -129,6 +156,12 @@ public class PacienteAction extends BasicAction {
 				}
 			}
 			
+			// obter a lista de estados.
+			obterListaEstados();
+			
+			// obter lista de tipos de contatos.
+			obterListaTipoContatos();
+			
 			return SUCCESS;
 		} catch (Exception e) {
 			if (e instanceof BusinessException || e instanceof IntegrationException) {
@@ -137,6 +170,39 @@ public class PacienteAction extends BasicAction {
 				addActionError("Serviço de busca indisponível.");
 			}
 			return ERROR;
+		}
+	}
+	
+	/**
+	 * Obter a lista de estados.
+	 * 
+	 * @throws Exception
+	 */
+	private void obterListaEstados() throws Exception {
+		setListaEstado(new ArrayList<EstadoVO>());
+		List<Estado> listaEst = enderecoFacade.listaEstados();
+		for (Estado estado: listaEst) {
+			EstadoVO estadoVO = new EstadoVO();
+			estadoVO.setEstCodigo(estado.getEstCodigo());
+			estadoVO.setEstNome(estado.getEstNome());
+			estadoVO.setEstSigla(estado.getEstSigla());
+			getListaEstado().add(estadoVO);
+		}
+	}
+	
+	/**
+	 * Obter a lista de tipos de contatos.
+	 * 
+	 * @throws Exception
+	 */
+	private void obterListaTipoContatos() throws Exception {
+		setListaTipoContato(new ArrayList<TipoContatoVO>());
+		List<TipoContato> listaTipoCon = contatoFacade.listaTipoContatos();
+		for (TipoContato tipoContato: listaTipoCon) {
+			TipoContatoVO tipoContatoVO = new TipoContatoVO();
+			tipoContatoVO.setTcoCodigo(tipoContato.getTcoCodigo());
+			tipoContatoVO.setTcoDescricao(tipoContato.getTcoDescricao());
+			getListaTipoContato().add(tipoContatoVO);
 		}
 	}
 
@@ -162,5 +228,21 @@ public class PacienteAction extends BasicAction {
 
 	public void setMensagemUsuario(String mensagemUsuario) {
 		this.mensagemUsuario = mensagemUsuario;
+	}
+
+	public List<TipoContatoVO> getListaTipoContato() {
+		return listaTipoContato;
+	}
+
+	public void setListaTipoContato(List<TipoContatoVO> listaTipoContato) {
+		this.listaTipoContato = listaTipoContato;
+	}
+
+	public List<EstadoVO> getListaEstado() {
+		return listaEstado;
+	}
+
+	public void setListaEstado(List<EstadoVO> listaEstado) {
+		this.listaEstado = listaEstado;
 	}
 }
