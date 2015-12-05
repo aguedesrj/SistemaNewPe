@@ -4,6 +4,8 @@
 
 <!-- formulário -->
 <s:form class="ui form" namespace="Paciente" id="formPesquisa" name="formPesquisa" theme="simple">
+	<s:hidden id="pesCodigo" name="pacienteVO.pessoaVO.pesCodigo"/>
+	<s:hidden id="pacCodigo" name="pacienteVO.pacCodigo"/>
 	<h4 class="ui dividing header">Cadastro de Paciente</h4>
 	<div class="ui top attached tabular menu">
   		<a class="item active" data-tab="dadosPessoais">Dados pessoais</a>
@@ -93,7 +95,24 @@
         </div>		
 	</div>
 	<div class="ui bottom attached tab segment" data-tab="contato">
-  		Terceiro
+		<div align="right" style="font-size: 14px; font-style: italic;">
+			Total de contatos: <span id="spanTotalContatos" style="font-weight: bold;">0</span>
+		</div>
+		<table id="tableListaContatos" class="ui striped table" style="margin-top: 5px;">
+			<thead>
+				<tr>
+		    		<th style="width: 20px;"></th>
+		    		<th style="width: 20px;"></th>
+		      		<th>Contato</th>
+		      		<th>Responsável</th>
+		      		<th>Tipo de Contato</th>
+		    	</tr>
+			</thead>
+		  	<tbody>
+		
+			</tbody>
+		</table>
+		<button id="btnIncluirContato" type="button" class="ui blue submit button" style="margin-top: 10px;">Incluir novo contato</button>
 	</div>
 	<div class="ui bottom attached tab segment" data-tab="informacoes">
   		Quarto
@@ -101,3 +120,50 @@
 	<button id="btnSalvar" type="button" class="ui blue submit button" style="margin-top: 10px;">Salvar</button>
 </s:form>
 
+<!-- Modal Contato -->
+<div id="modalContato" class="ui small modal">
+	<div class="header">
+		::: Sistema New Pé :::
+    </div>
+	<div class="description">
+		<div style="padding-left: 20px; padding-top: 20px; padding-bottom: 20px;">
+			<s:form class="ui form" namespace="Contato" id="formContato" name="formContato" theme="simple">
+				<s:hidden id="conCodigo" name="contatoVO.conCodigo"/>
+				<div class="fields">
+					<div class="field">
+			        	<label>Contato</label>
+			        	<div class="ui corner labeled input">
+							<s:textfield name="contatoVO.conDescricao" id="conDescricao" size="40" maxlength="60" theme="simple" required="true" placeholder="Descrição do contato..."/>
+							<div class="ui corner label">
+	  							<i class="asterisk icon"></i>
+							</div>
+						</div>
+					</div>
+					<div class="field">
+			        	<label>Responsável</label>
+						<s:textfield name="contatoVO.conResponsavel" id="conResponsavel" size="40" maxlength="80" theme="simple" required="true" placeholder="Nome do responsável..."/>
+					</div>
+				</div>
+				<div class="fields">
+					<div class="field" style="width: 250px;">
+			        	<label>Tipo Contato</label>
+			        	<s:select class="ui fluid dropdown" headerKey="-1" 
+			        		headerValue="::: Selecione Tipo Contato :::"
+							list="listaTipoContato" listKey="tcoCodigo" 
+							listValue="tcoDescricao" name="contatoVO.tcoCodigo"/>
+					</div>				
+				</div>
+			</s:form>
+		</div>
+	</div>
+    <div class="actions">
+		<div class="ui red cancel inverted button">
+        	<i class="remove icon"></i>
+        	Cancelar
+      	</div>
+      	<div class="ui green ok inverted button">
+        	<i class="checkmark icon"></i>
+        	Confirmar
+      	</div>
+	</div>
+</div>

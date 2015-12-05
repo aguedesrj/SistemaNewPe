@@ -37,20 +37,23 @@
 </div>
 
 <!-- Modal Sair -->
-<div class="ui small modal">
+<div id="modalSair" class="ui small modal">
 	<div class="header">
 		::: Sistema New Pé :::
     </div>
 	<div class="description">
-		Deseja sair do sistema?
+		<div style="padding-left: 20px; padding-top: 20px; padding-bottom: 20px;">
+			Deseja sair do sistema?
+		</div>
 	</div>
     <div class="actions">
-		<div class="ui black deny button">
+		<div class="ui red cancel inverted button">
+        	<i class="remove icon"></i>
         	Não
       	</div>
-      	<div class="ui positive right labeled icon button">
-        	Sim
+      	<div class="ui green ok inverted button">
         	<i class="checkmark icon"></i>
+        	Sim
       	</div>
 	</div>
 </div>

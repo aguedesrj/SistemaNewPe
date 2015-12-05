@@ -14,6 +14,7 @@ import br.com.guedes.newpe.model.Paciente;
 import br.com.guedes.newpe.model.Pessoa;
 import br.com.guedes.newpe.model.TipoContato;
 import br.com.guedes.newpe.util.BusinessException;
+import br.com.guedes.newpe.util.Constantes;
 import br.com.guedes.newpe.util.IntegrationException;
 import br.com.guedes.newpe.util.Util;
 import br.com.guedes.newpe.vo.ContatoVO;
@@ -39,9 +40,15 @@ public class PacienteAction extends BasicAction {
 	public ContatoFacade contatoFacade;
 	
 	private PacienteVO pacienteVO;
+	
+	private ContatoVO contatoVO;
+	
+	private List<ContatoVO> listaContatoVO;
+	
 	private List<PessoaVO> listaPacientes;
 	private List<TipoContatoVO> listaTipoContato;
 	private List<EstadoVO> listaEstado;
+	
 	private String mensagemUsuario;
 
 	public String exibirTelaPesquisa() {
@@ -95,6 +102,52 @@ public class PacienteAction extends BasicAction {
 		} catch (Exception e) {
 			return ERROR;
 		}
+	}
+	
+//	public String novoContato() {
+//		return SUCCESS;
+//	}
+//	
+//	public String alterarContato() {
+//		
+//		return SUCCESS;
+//	}
+	
+	@SuppressWarnings("unchecked")
+	public String incluirContato() {
+		setListaContatoVO((ArrayList<ContatoVO>) this.getRequest().getSession().getAttribute(Constantes.KEY_LISTA_CONTATOS_SESSION));
+		if (getListaContatoVO() == null) {
+			setListaContatoVO(new ArrayList<ContatoVO>());
+		}
+		
+		// verifica se é novo contato...
+		if (getContatoVO().getConCodigo() == null || getContatoVO().getConCodigo() == 0) {
+			getListaContatoVO().add(getContatoVO());
+		} else {
+			for (ContatoVO contat: getListaContatoVO()) {
+				if (contat.getConCodigo() == getContatoVO().getConCodigo()) {
+					contat.setConDescricao(getContatoVO().getConDescricao());
+					contat.setConResponsavel(getContatoVO().getConResponsavel());
+					contat.setTcoCodigo(getContatoVO().getTcoCodigo());
+					break;
+				}
+			}
+		}
+		this.getRequest().getSession().setAttribute(Constantes.KEY_LISTA_CONTATOS_SESSION, getListaContatoVO());
+		return SUCCESS;
+	}
+	
+	@SuppressWarnings("unchecked")
+	public String excluirContato() {
+		setListaContatoVO((ArrayList<ContatoVO>) this.getRequest().getSession().getAttribute(Constantes.KEY_LISTA_CONTATOS_SESSION));
+		for (ContatoVO contat: getListaContatoVO()) {
+			if (contat.getConCodigo() == getContatoVO().getConCodigo()) {
+				getListaContatoVO().remove(contat);
+				break;
+			}
+		}
+		this.getRequest().getSession().setAttribute(Constantes.KEY_LISTA_CONTATOS_SESSION, getListaContatoVO());
+		return SUCCESS;
 	}
 	
 	/**
@@ -244,5 +297,21 @@ public class PacienteAction extends BasicAction {
 
 	public void setListaEstado(List<EstadoVO> listaEstado) {
 		this.listaEstado = listaEstado;
+	}
+
+	public ContatoVO getContatoVO() {
+		return contatoVO;
+	}
+
+	public void setContatoVO(ContatoVO contatoVO) {
+		this.contatoVO = contatoVO;
+	}
+
+	public List<ContatoVO> getListaContatoVO() {
+		return listaContatoVO;
+	}
+
+	public void setListaContatoVO(List<ContatoVO> listaContatoVO) {
+		this.listaContatoVO = listaContatoVO;
 	}
 }

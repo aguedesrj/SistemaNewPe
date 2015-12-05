@@ -11,15 +11,16 @@ $(document).ready(function() {
         });
 	
 	$('#homeSair').click(function() {
-		$('.ui.modal')
+		$('#modalSair')
 			.modal({
 				blurring  : true,
 				closable  : false,
 				onDeny    : function(){
-					window.alert('Wait not yet!');
 					return true;
 				},
 				onApprove : function() {
+//					$("#formPesquisa").attr("action", "InicioAlteracao");
+//					$("#formPesquisa").submit();
 					return true;
 				}
 			})

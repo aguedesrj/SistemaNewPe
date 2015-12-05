@@ -30,7 +30,8 @@ public class ContatoFacadeImpl implements ContatoFacade {
 	@SuppressWarnings("unchecked")
 	public List<TipoContato> listaTipoContatos() throws BusinessException, IntegrationException {
 		LOGGER.debug("Lista de tipos de contatos...");
-		return (ArrayList<TipoContato>) getSessionFactory().getCurrentSession().find("from TipoContato");
+		List<TipoContato> lista = (ArrayList<TipoContato>) getSessionFactory().getCurrentSession().find("from TipoContato");
+		return lista;
 	}
 
 	public SessionFactory getSessionFactory() {

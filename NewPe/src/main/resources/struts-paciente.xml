@@ -40,5 +40,68 @@
             <result name="error" type="tiles">paciente.pesquisa</result>
         </action>   
         
+        <!-- Contato -->
+<!-- 		<action name="NovoContato" class="br.com.guedes.newpe.action.PacienteAction" method="novoContato">
+            <result name="success" type="json">
+				<param name="excludeNullProperties">true</param>		
+				<param name="excludeProperties">
+					request,fieldErrors,errors,actionErrors,actionMessages,	errorMessages,locale,texts
+				</param>            
+            </result>
+            <result name="error" type="json">
+				<param name="excludeNullProperties">true</param>		
+				<param name="excludeProperties">
+					request,fieldErrors,errors,actionErrors,actionMessages,	errorMessages,locale,texts
+				</param>            
+            </result>            
+        </action> 
+        
+        <action name="AlteraContato" class="br.com.guedes.newpe.action.PacienteAction" method="alterarContato">
+            <result name="success" type="json">
+				<param name="excludeNullProperties">true</param>		
+				<param name="excludeProperties">
+					request,fieldErrors,errors,actionErrors,actionMessages,	errorMessages,locale,texts
+				</param>            
+            </result>
+            <result name="error" type="json">
+				<param name="excludeNullProperties">true</param>		
+				<param name="excludeProperties">
+					request,fieldErrors,errors,actionErrors,actionMessages,	errorMessages,locale,texts
+				</param>            
+            </result>            
+        </action>  --> 
+        
+        <action name="IncluiContato" class="br.com.guedes.newpe.action.PacienteAction" method="incluirContato">
+            <result name="success" type="json">
+				<param name="excludeNullProperties">true</param>		
+				<param name="excludeProperties">
+					request,fieldErrors,errors,actionErrors,actionMessages,	errorMessages,locale,texts,
+					listaEstado,listaTipoContato,listaPacientes,pacienteVO
+				</param>            
+            </result>
+            <result name="error" type="json">
+				<param name="excludeNullProperties">true</param>		
+				<param name="excludeProperties">
+					request,fieldErrors,errors,actionErrors,actionMessages,	errorMessages,locale,texts,
+					listaEstado,listaTipoContato,listaPacientes,pacienteVO
+				</param>            
+            </result>            
+        </action> 
+        
+        <action name="ExcluiContato" class="br.com.guedes.newpe.action.PacienteAction" method="excluirContato">
+            <result name="success" type="json">
+				<param name="excludeNullProperties">true</param>		
+				<param name="excludeProperties">
+					request,fieldErrors,errors,actionErrors,actionMessages,	errorMessages,locale,texts
+				</param>            
+            </result>
+            <result name="error" type="json">
+				<param name="excludeNullProperties">true</param>		
+				<param name="excludeProperties">
+					request,fieldErrors,errors,actionErrors,actionMessages,	errorMessages,locale,texts
+				</param>            
+            </result>            
+        </action>     
+        
     </package>	
 </struts>
