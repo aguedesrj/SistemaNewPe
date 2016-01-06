@@ -54,22 +54,24 @@
 					request,fieldErrors,errors,actionErrors,actionMessages,	errorMessages,locale,texts
 				</param>            
             </result>            
-        </action> 
+        </action> -->
         
         <action name="AlteraContato" class="br.com.guedes.newpe.action.PacienteAction" method="alterarContato">
             <result name="success" type="json">
 				<param name="excludeNullProperties">true</param>		
 				<param name="excludeProperties">
-					request,fieldErrors,errors,actionErrors,actionMessages,	errorMessages,locale,texts
+					request,fieldErrors,errors,actionErrors,actionMessages,	errorMessages,locale,texts,
+					listaEstado,listaTipoContato,listaPacientes,pacienteVO,listaContatoVO
 				</param>            
             </result>
             <result name="error" type="json">
 				<param name="excludeNullProperties">true</param>		
 				<param name="excludeProperties">
-					request,fieldErrors,errors,actionErrors,actionMessages,	errorMessages,locale,texts
+					request,fieldErrors,errors,actionErrors,actionMessages,	errorMessages,locale,texts,
+					listaEstado,listaTipoContato,listaPacientes,pacienteVO,listaContatoVO
 				</param>            
             </result>            
-        </action>  --> 
+        </action>   
         
         <action name="IncluiContato" class="br.com.guedes.newpe.action.PacienteAction" method="incluirContato">
             <result name="success" type="json">
@@ -92,13 +94,15 @@
             <result name="success" type="json">
 				<param name="excludeNullProperties">true</param>		
 				<param name="excludeProperties">
-					request,fieldErrors,errors,actionErrors,actionMessages,	errorMessages,locale,texts
+					request,fieldErrors,errors,actionErrors,actionMessages,	errorMessages,locale,texts,
+					listaEstado,listaTipoContato,listaPacientes,pacienteVO
 				</param>            
             </result>
             <result name="error" type="json">
 				<param name="excludeNullProperties">true</param>		
 				<param name="excludeProperties">
-					request,fieldErrors,errors,actionErrors,actionMessages,	errorMessages,locale,texts
+					request,fieldErrors,errors,actionErrors,actionMessages,	errorMessages,locale,texts,
+					listaEstado,listaTipoContato,listaPacientes,pacienteVO
 				</param>            
             </result>            
         </action>     

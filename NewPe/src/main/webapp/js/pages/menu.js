@@ -11,7 +11,8 @@ $(document).ready(function() {
         });
 	
 	$('#homeSair').click(function() {
-		$('#modalSair')
+		$("#spanMensagemPergunta").html("Deseja sair do sistema?");
+		$('#modalPergunta')
 			.modal({
 				blurring  : true,
 				closable  : false,

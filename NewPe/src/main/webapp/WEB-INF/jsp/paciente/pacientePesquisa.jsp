@@ -1,6 +1,6 @@
 <%@ taglib prefix="s"  uri="/struts-tags" %>
 
-<script src="../js/pages/pacientePesquisa.js"></script>
+<script src="../js/pages/paciente/pacientePesquisa.js"></script>
 
 <s:if test="hasActionErrors()">
 	<div class="ui negative message" style="height: 80px;">

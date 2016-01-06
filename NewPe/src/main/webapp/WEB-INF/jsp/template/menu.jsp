@@ -35,25 +35,3 @@
 		<a id="homeSair" class="item">Sair</a>
 	</div>
 </div>
-
-<!-- Modal Sair -->
-<div id="modalSair" class="ui small modal">
-	<div class="header">
-		::: Sistema New Pé :::
-    </div>
-	<div class="description">
-		<div style="padding-left: 20px; padding-top: 20px; padding-bottom: 20px;">
-			Deseja sair do sistema?
-		</div>
-	</div>
-    <div class="actions">
-		<div class="ui red cancel inverted button">
-        	<i class="remove icon"></i>
-        	Não
-      	</div>
-      	<div class="ui green ok inverted button">
-        	<i class="checkmark icon"></i>
-        	Sim
-      	</div>
-	</div>
-</div>

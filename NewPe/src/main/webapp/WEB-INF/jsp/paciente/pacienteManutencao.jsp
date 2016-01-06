@@ -1,6 +1,6 @@
 <%@ taglib prefix="s"  uri="/struts-tags" %>
 
-<script src="../js/pages/pacienteManutencao.js"></script>
+<script src="../js/pages/paciente/pacienteManutencao.js"></script>
 
 <!-- formulário -->
 <s:form class="ui form" namespace="Paciente" id="formPesquisa" name="formPesquisa" theme="simple">
@@ -86,12 +86,11 @@
 		</div>
 		<div class="field" style="width: 300px;">
 			<label>Estado</label>
-          	<select class="ui fluid dropdown">
-          		<option value="">::: Selecione um estado :::</option>
-            	<s:iterator value="listaEstado" status="estadoVO">
-            		<option value="<s:property value="estSigla" />"><s:property value="estNome"/></option>
-            	</s:iterator>
-          </select>
+			<s:select class="ui fluid dropdown" headerKey="-1" 
+				headerValue="::: Selecione um estado :::"
+				list="listaEstado" listKey="estSigla" 
+				listValue="estNome" name="pacienteVO.pessoaVO.enderecoVO.estCodigo"
+				id="estCodigo"/>
         </div>		
 	</div>
 	<div class="ui bottom attached tab segment" data-tab="contato">
@@ -129,6 +128,8 @@
 		<div style="padding-left: 20px; padding-top: 20px; padding-bottom: 20px;">
 			<s:form class="ui form" namespace="Contato" id="formContato" name="formContato" theme="simple">
 				<s:hidden id="conCodigo" name="contatoVO.conCodigo"/>
+				<s:hidden id="novoContato" name="contatoVO.novoContato"/>
+				<s:hidden id="tcoDescricao" name="contatoVO.tipoContatoVO.tcoDescricao"/>
 				<div class="fields">
 					<div class="field">
 			        	<label>Contato</label>
@@ -150,7 +151,8 @@
 			        	<s:select class="ui fluid dropdown" headerKey="-1" 
 			        		headerValue="::: Selecione Tipo Contato :::"
 							list="listaTipoContato" listKey="tcoCodigo" 
-							listValue="tcoDescricao" name="contatoVO.tcoCodigo"/>
+							listValue="tcoDescricao" name="contatoVO.tipoContatoVO.tcoCodigo"
+							id="tcoCodigo"/>
 					</div>				
 				</div>
 			</s:form>

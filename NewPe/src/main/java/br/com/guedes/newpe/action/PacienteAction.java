@@ -2,6 +2,7 @@ package br.com.guedes.newpe.action;
 
 import java.util.ArrayList;
 import java.util.List;
+import org.apache.commons.lang.math.RandomUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
@@ -57,6 +58,9 @@ public class PacienteAction extends BasicAction {
 	
 	public String exibirTelaManutencao() {
 		try {
+			// limpar lista de contatos da sessão.
+			getRequest().getSession().removeAttribute(Constantes.KEY_LISTA_CONTATOS_SESSION);
+			
 			// obter a lista de estados.
 			obterListaEstados();
 			
@@ -122,13 +126,17 @@ public class PacienteAction extends BasicAction {
 		
 		// verifica se é novo contato...
 		if (getContatoVO().getConCodigo() == null || getContatoVO().getConCodigo() == 0) {
+			getContatoVO().setConCodigo(RandomUtils.nextInt());
+			getContatoVO().setNovoContato(true);
 			getListaContatoVO().add(getContatoVO());
 		} else {
 			for (ContatoVO contat: getListaContatoVO()) {
-				if (contat.getConCodigo() == getContatoVO().getConCodigo()) {
+				if (contat.getConCodigo().intValue() == getContatoVO().getConCodigo().intValue()) {
 					contat.setConDescricao(getContatoVO().getConDescricao());
 					contat.setConResponsavel(getContatoVO().getConResponsavel());
-					contat.setTcoCodigo(getContatoVO().getTcoCodigo());
+					contat.setTipoContatoVO(new TipoContatoVO());
+					contat.getTipoContatoVO().setTcoCodigo(getContatoVO().getTipoContatoVO().getTcoCodigo());
+					contat.getTipoContatoVO().setTcoDescricao(getContatoVO().getTipoContatoVO().getTcoDescricao());
 					break;
 				}
 			}
@@ -138,10 +146,28 @@ public class PacienteAction extends BasicAction {
 	}
 	
 	@SuppressWarnings("unchecked")
+	public String alterarContato() {
+		setListaContatoVO((ArrayList<ContatoVO>) this.getRequest().getSession().getAttribute(Constantes.KEY_LISTA_CONTATOS_SESSION));
+		for (ContatoVO contat: getListaContatoVO()) {
+			if (contat.getConCodigo().intValue() == getContatoVO().getConCodigo().intValue()) {
+				getContatoVO().setConCodigo(contat.getConCodigo());
+				getContatoVO().setConDescricao(contat.getConDescricao());
+				getContatoVO().setConResponsavel(contat.getConResponsavel());
+				getContatoVO().setNovoContato(contat.isNovoContato());
+				getContatoVO().setTipoContatoVO(new TipoContatoVO());
+				getContatoVO().getTipoContatoVO().setTcoCodigo(contat.getTipoContatoVO().getTcoCodigo());
+				getContatoVO().getTipoContatoVO().setTcoDescricao(contat.getTipoContatoVO().getTcoDescricao());
+				break;
+			}
+		}
+		return SUCCESS;
+	}
+	
+	@SuppressWarnings("unchecked")
 	public String excluirContato() {
 		setListaContatoVO((ArrayList<ContatoVO>) this.getRequest().getSession().getAttribute(Constantes.KEY_LISTA_CONTATOS_SESSION));
 		for (ContatoVO contat: getListaContatoVO()) {
-			if (contat.getConCodigo() == getContatoVO().getConCodigo()) {
+			if (contat.getConCodigo().intValue() == getContatoVO().getConCodigo().intValue()) {
 				getListaContatoVO().remove(contat);
 				break;
 			}
@@ -203,7 +229,10 @@ public class PacienteAction extends BasicAction {
 					contatoVO.setConCodigo(contato.getConCodigo());
 					contatoVO.setConDescricao(contato.getConDescricao());
 					contatoVO.setConResponsavel(contato.getConResponsavel());
-					contatoVO.setTcoCodigo(contato.getTipoContato().getTcoCodigo());
+					contatoVO.setTipoContatoVO(new TipoContatoVO());
+					contatoVO.setTipoContatoVO(new TipoContatoVO()); 
+					contatoVO.getTipoContatoVO().setTcoCodigo(contato.getTipoContato().getTcoCodigo());
+					contatoVO.getTipoContatoVO().setTcoDescricao(contato.getTipoContato().getTcoDescricao());
 					
 					getPacienteVO().getPessoaVO().getListaContatos().add(contatoVO);
 				}

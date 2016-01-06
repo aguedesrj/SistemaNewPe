@@ -7,10 +7,10 @@ public class ContatoVO implements Serializable {
 	private static final long serialVersionUID = -1074993420183706486L;
 
 	private Integer conCodigo;
-	private Integer tcoCodigo;
 	private String conDescricao;
 	private String conResponsavel;
-	private String tcoDescricao;
+	private boolean novoContato;
+	private TipoContatoVO tipoContatoVO;
 	
 	public Integer getConCodigo() {
 		return conCodigo;
@@ -18,14 +18,6 @@ public class ContatoVO implements Serializable {
 	
 	public void setConCodigo(Integer conCodigo) {
 		this.conCodigo = conCodigo;
-	}
-	
-	public Integer getTcoCodigo() {
-		return tcoCodigo;
-	}
-	
-	public void setTcoCodigo(Integer tcoCodigo) {
-		this.tcoCodigo = tcoCodigo;
 	}
 	
 	public String getConDescricao() {
@@ -44,11 +36,19 @@ public class ContatoVO implements Serializable {
 		this.conResponsavel = conResponsavel;
 	}
 	
-	public String getTcoDescricao() {
-		return tcoDescricao;
+	public boolean isNovoContato() {
+		return novoContato;
 	}
-	
-	public void setTcoDescricao(String tcoDescricao) {
-		this.tcoDescricao = tcoDescricao;
+
+	public void setNovoContato(boolean novoContato) {
+		this.novoContato = novoContato;
+	}
+
+	public TipoContatoVO getTipoContatoVO() {
+		return tipoContatoVO;
+	}
+
+	public void setTipoContatoVO(TipoContatoVO tipoContatoVO) {
+		this.tipoContatoVO = tipoContatoVO;
 	}
 }
